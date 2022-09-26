@@ -11,6 +11,8 @@ app.get('/', (req, res) => {
 
 app.post('/create', Article.articleCreate)
 
+app.get('/articles', Article.articleRead)
+
 const PORT = 3000
 
 app.listen(PORT, "localhost", () => {

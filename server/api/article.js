@@ -7,12 +7,13 @@ const articleCreate = async (req, res) => {
     const newArticle = await model.Article({ content })
     const saveRequest = await newArticle.save()
     console.log(saveRequest)
-    res.send(true)
+    res.send(saveRequest)
 }
 
 // Read
-const articleRead = (req, res) => {
-    
+const articleRead = async (req, res) => {
+    const articles = await model.Article.find({})
+    res.send(articles)
 }
 // Update
 const articleUpdate = (req, res) => {
