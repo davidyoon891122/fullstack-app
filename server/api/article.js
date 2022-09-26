@@ -1,3 +1,4 @@
+const { Model } = require('mongoose')
 const model = require('../mongoose/model')
 
 // Create
@@ -16,12 +17,16 @@ const articleRead = async (req, res) => {
     res.send(articles)
 }
 // Update
-const articleUpdate = (req, res) => {
-    
+const articleUpdate = async (req, res) => {
+    const { id, content } = req.body
+    const updatedArticle = await model.Article.findByIdAndUpdate(id, { content })
+    res.send(updatedArticle)
 }
 // Delete
-const articleDelete = (req, res) => {
-    
+const articleDelete = async (req, res) => {
+    const { id } = req.params
+    const deleteArticle = await model.Article.findOneAndDelete({ id })
+    res.send(deleteArticle)
 }
 
 module.exports =  {

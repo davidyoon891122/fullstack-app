@@ -13,6 +13,10 @@ app.post('/create', Article.articleCreate)
 
 app.get('/articles', Article.articleRead)
 
+app.patch('/update', Article.articleUpdate)
+
+app.delete('/delete', Article.articleDelete)
+
 const PORT = 3000
 
 app.listen(PORT, "localhost", () => {
