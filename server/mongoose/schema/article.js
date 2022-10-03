@@ -5,7 +5,7 @@ const Article = new mongoose.Schema({
         default: "",
         required: true,
     },
-    createAt: {
+    createdAt: {
         type: Date,
         default: Date.now(),
         required: true,
