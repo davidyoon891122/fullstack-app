@@ -13,7 +13,9 @@ app.get('/', (req, res) => {
 
 app.post('/create', Article.articleCreate)
 
-app.get('/articles', Article.articleRead)
+app.get('/read', Article.articleRead)
+
+app.get('/read/:id', Article.articleFindOne)
 
 app.patch('/update', Article.articleUpdate)
 
