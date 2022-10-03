@@ -8,7 +8,7 @@ Vue.use(VueRouter)
 const router = new VueRouter({
     mode: "history",
     routes: [
-        { path: "/", name: "Home", component: HomeView },
+        { path: "/", component: HomeView },
         { path: "/:id", component: ArticleView }
     ]
 })
