@@ -7,7 +7,7 @@ const articleCreate = async (req, res) => {
 
     const newArticle = await Article({ content })
     const saveRequest = await newArticle.save()
-    console.log(saveRequest)
+    console.log("create Article: ",saveRequest)
     res.send(saveRequest)
 }
 
