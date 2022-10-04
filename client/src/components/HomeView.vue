@@ -6,14 +6,16 @@
             <button @click="createArticle">생성하기</button>
         </div>
         <h2>작성된 게시글</h2>
-        <ul>
-            <li v-for="article in articles" :key="article._id">{{article.content}}</li>
-        </ul>
+        <CardView v-for="article in articles" :key="article._id" :article="article" @update="updateCard" @delete="deleteCard"></CardView>
     </div>
 </template>
 <script>
 import axios from "axios"
+import CardView from "@/components/CardView.vue"
 export default {
+    components: {
+        CardView
+    },
     data() {
         return {
             content: "",
@@ -44,7 +46,19 @@ export default {
             }
             this.articles.push(data)
             this.content = ""
-        } 
+        },
+        updateCard({id, content}) {
+            const idx = this.articles.findIndex(v => v._id === id)
+            if (idx > -1) {
+                this.articles[idx].content = content
+            }
+        },
+        deleteCard({id}) {
+            const idx = this.articles.findIndex(v => v._id === id)
+            if (idx > -1) {
+                this.articles.splice(idx, 1)
+            }
+        }
   }
 }
 </script>
