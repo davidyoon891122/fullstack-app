@@ -7,6 +7,7 @@
         <div class="created-at">
             {{article.createdAt | moment("M월 D일 HH:mm:ss")}}
         </div>
+        <button v-if="!isEditing" @click="moveToArticle">이동</button>
         <button @click="toggleTextArea">{{!isEditing ? "수정" : "수정 취소"}}</button>
         <button v-if="!isEditing" @click="deleteArticle">삭제</button>
         <button v-else @click="updateArticle">수정 완료</button>
@@ -53,6 +54,14 @@ export default {
                 window.alert('실패')
             }
             this.$emit("delete", this.article._id)
+        },
+        moveToArticle() {
+            this.$router.push({
+                name: "Article",
+                params: {
+                    id: this.article._id
+                }
+            })
         }
     }
 }

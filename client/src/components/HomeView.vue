@@ -6,7 +6,12 @@
             <button @click="createArticle">생성하기</button>
         </div>
         <h2>작성된 게시글</h2>
-        <CardView v-for="article in articles" :key="article._id" :article="article" @update="updateCard" @delete="deleteCard"></CardView>
+        <CardView v-for="article in articles" 
+            :key="article._id" 
+            :article="article" 
+            @update="updateCard" 
+            @delete="deleteCard">
+        </CardView>
     </div>
 </template>
 <script>
